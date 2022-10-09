@@ -1,0 +1,10 @@
+<% if Favorite.find_by(user_id: current_user.id, blog_id: blog.id) %>
+  <%= link_to favorite_path(id: current_user.favorites.find_by(blog_id: blog.id)), method: :delete, class: "favorite-link delete-#{blog.id}", remote: true do %>
+    <i class="material-icons">star</i><%= blog.favorites.length %>
+  <% end %>
+<% else %>
+  <%= link_to favorites_path(blog_id: blog.id), method: :post, class: "favorite-link post-#{blog.id}" , remote: true do %>
+    <i class="material-icons">star_border</i><%= blog.favorites.length %>
+  <% end %>
+<% end %>
+
