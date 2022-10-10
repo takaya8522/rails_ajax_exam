@@ -19,8 +19,8 @@
         <td><%= blog.description %></td>
         <td><%= blog.user.name %></td>
         <td><%= link_to 'Show', blog %></td>
-        <td id="favorite-<%= blog.id %>">
-          <%= render partial: "favorites/favorite", locals: { blog: blog } %>
+        <td id="favorite_<%= blog.id %>">
+          <%= render partial: "favorites/favorite", locals: { blog: blog } if blog.user != current_user %>
         </td>
       </tr>
     <% end %>
